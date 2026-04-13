@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/jobs")   // Base url for all endpoints in controller and both for class and method level
 public class JobController {
 
     public JobService jobService;
@@ -19,19 +19,20 @@ public class JobController {
         this.jobService = jobService;
     }
 
-    @GetMapping("/jobs")
+    @GetMapping // reduced code
+    //@RequestMapping(value = "/jobs", method = RequestMethod.GET) // url + type => alternative for http mapping annotations
     public ResponseEntity<List<Job>> getAllJobs() {
         return ResponseEntity.ok(jobService.getAllJobs());
     }
     // Response Entity is wrapper over your response.
 
-    @PostMapping("/jobs")
+    @PostMapping
     public ResponseEntity<String> createJob(@RequestBody Job job) {
         jobService.createJob(job);
         return new ResponseEntity<>("Job added successfully!", HttpStatus.OK);  // second way of using response entity
     }
 
-    @GetMapping("/jobs/{jobId}")
+    @GetMapping("/{jobId}")
     public ResponseEntity<Object> getJobById(@PathVariable Long jobId) {
         Job job = jobService.getJobById(jobId);
         if (job!=null)
@@ -42,7 +43,7 @@ public class JobController {
         return new ResponseEntity<>("Job with id: "+jobId+" not found.", HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/jobs/{jobId}")
+    @DeleteMapping("/{jobId}")
     public ResponseEntity<String> deleteJobById(@PathVariable Long jobId) {
         boolean isJobDeleted = jobService.deleteJobById(jobId);
         if (isJobDeleted)
@@ -50,7 +51,7 @@ public class JobController {
         return new ResponseEntity<>("Job with id: "+jobId+" not found.", HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/jobs/{jobId}")
+    @PutMapping("/{jobId}")
     public ResponseEntity<String> updateJobById(@PathVariable Long jobId,@RequestBody Job updatedJob) {
         boolean isJobUpdated = jobService.updateJobById(jobId, updatedJob);
         if (isJobUpdated)

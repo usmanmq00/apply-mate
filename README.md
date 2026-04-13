@@ -41,6 +41,24 @@ In Spring Boot, there are shortcut annotations for different HTTP methods:
 
 In short: each annotation maps a specific HTTP action to your method.
 
+### @Service
+@Service in Spring Framework is used to define the business logic layer of your application.
+It tells Spring this class will handle processing, calculations, or rules.
+In short: it sits between Controller and Repository and contains your core logic.
 
+## Programming and Spring Concepts
+### Loose Coupling
+Loose Coupling means different parts of your code depend as little as possible on each other.
+Changes in one class don’t break others easily. 
+In Spring Framework, this is achieved using interfaces + dependency injection.
 
-    
+### Dependency Injection
+Dependency Injection (DI) in Spring Framework means giving a class the objects it needs from outside, instead of creating them inside.
+Spring automatically provides (injects) these dependencies at runtime.
+In short: it helps achieve loose coupling and cleaner code
+
+### Constructor Injection
+Constructor Injection in Spring Framework means passing dependencies through a class constructor instead of creating them inside.
+Spring automatically injects required objects when the class is created.
+In short: it’s the recommended way of Dependency Injection (more safe and testable).
+

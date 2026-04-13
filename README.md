@@ -62,3 +62,8 @@ Constructor Injection in Spring Framework means passing dependencies through a c
 Spring automatically injects required objects when the class is created.
 In short: it’s the recommended way of Dependency Injection (more safe and testable).
 
+
+
+## Project Learnings
+### Taking control generating id from end user to yourself
+Create a class variable with value and increment it before adding new object.

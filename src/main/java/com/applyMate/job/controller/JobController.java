@@ -23,6 +23,7 @@ public class JobController {
     public ResponseEntity<List<Job>> getAllJobs() {
         return ResponseEntity.ok(jobService.getAllJobs());
     }
+    // Response Entity is wrapper over your response.
 
     @PostMapping("/jobs")
     public ResponseEntity<String> createJob(@RequestBody Job job) {
@@ -38,6 +39,14 @@ public class JobController {
         //return ResponseEntity.notFound().build();
         // we use .build() because ResponseEntity.notFound() only creates a builder, not the final response.
         // It finalizes the response and converts the builder into a real ResponseEntity object.
+        return new ResponseEntity<>("Job with id: "+jobId+" not found.", HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping("/jobs/{jobId}")
+    public ResponseEntity<String> deleteJobById(@PathVariable Long jobId) {
+        boolean isJobDeleted = jobService.deleteJobById(jobId);
+        if (isJobDeleted)
+            return ResponseEntity.ok("Job deleted successfully!");
         return new ResponseEntity<>("Job with id: "+jobId+" not found.", HttpStatus.NOT_FOUND);
     }
 

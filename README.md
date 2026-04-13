@@ -79,6 +79,17 @@ HttpStatus in Spring Framework is an enum that contains standard HTTP status cod
 It is used with ResponseEntity to set the response status.
 In short: it represents API response status
 
+## Java Concepts
+### Iterator
+An Iterator helps you go through a list safely and remove elements without errors unlike for-each which gives error.
+It creates a cursor that moves through each item in the list one by one.
+Because the for-each loop internally uses an iterator, and when you modify (remove/add) the list directly, the iterator detects a mismatch.
+We need a loop with Iterator to traverse all elements safely and perform actions like remove while iterating.
+
 ## Project Learnings
 ### Taking control generating id from end user to yourself
 Create a class variable with value and increment it before adding new object.
+
+### Removal in for-each loop
+for-each loop internally uses an iterator, and when you modify (remove/add) the list directly, the iterator detects a mismatch.
+This cause errors.

@@ -6,11 +6,14 @@ import java.util.List;
 
 public interface JobService {
 
-    public List<Job> getAllJobs();
+    List<Job> getAllJobs();
 
-    public void createJob(Job job);
+    void createJob(Job job);
 
-    public Job getJobById(Long jobId);
+    Job getJobById(Long jobId);
 
     boolean deleteJobById(Long jobId);
+
+    boolean updateJobById(Long jobId, Job updatedJob);
+
 }

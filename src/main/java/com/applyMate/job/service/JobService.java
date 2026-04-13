@@ -10,4 +10,6 @@ public interface JobService {
 
     public void createJob(Job job);
 
+    public Job getJobById(Long jobId);
+
 }

@@ -19,8 +19,15 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void createJob(Job job) {
-        job.setJobId(jobId++);
+        job.setJobId(jobId++);    // Job Id cannot be null or duplicate
         jobs.add(job);
+    }
+
+    @Override
+    public Job getJobById(Long jobId) {
+        for (Job job: jobs)
+            if (job.getJobId().equals(jobId)) return job;
+        return null;
     }
 
 }

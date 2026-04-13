@@ -46,6 +46,11 @@ In short: each annotation maps a specific HTTP action to your method.
 It tells Spring this class will handle processing, calculations, or rules.
 In short: it sits between Controller and Repository and contains your core logic.
 
+### @PathVariable
+@PathVariable in Spring Boot is used to take a value directly from the URL.
+It matches the value in {} and sends it to your method.
+In short: it gets data from the URL path (like /user/10 → 10).
+
 ## Programming and Spring Concepts
 ### Loose Coupling
 Loose Coupling means different parts of your code depend as little as possible on each other.
@@ -63,6 +68,16 @@ Spring automatically injects required objects when the class is created.
 In short: it’s the recommended way of Dependency Injection (more safe and testable).
 
 
+
+### ResponseEntity class -> For consistent and customizable response across all apis
+ResponseEntity in Spring Framework is used to send a full HTTP response (body + status code + headers).
+It gives you control over what to return (like 200 OK, 404 Not Found).
+In short: it helps you send custom API responses with status.   // 
+
+### HttpStatus enum
+HttpStatus in Spring Framework is an enum that contains standard HTTP status codes (like 200, 404, 500).
+It is used with ResponseEntity to set the response status.
+In short: it represents API response status
 
 ## Project Learnings
 ### Taking control generating id from end user to yourself

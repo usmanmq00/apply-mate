@@ -67,7 +67,10 @@ Constructor Injection in Spring Framework means passing dependencies through a c
 Spring automatically injects required objects when the class is created.
 In short: it’s the recommended way of Dependency Injection (more safe and testable).
 
-
+### Entity
+Entity in JPA is a Java class that represents a database table.
+Each object of that class represents a row in the table.
+In short: class = table, object = row.
 
 ### ResponseEntity class -> For consistent and customizable response across all apis
 ResponseEntity in Spring Framework is used to send a full HTTP response (body + status code + headers).
@@ -78,6 +81,49 @@ In short: it helps you send custom API responses with status.   //
 HttpStatus in Spring Framework is an enum that contains standard HTTP status codes (like 200, 404, 500).
 It is used with ResponseEntity to set the response status.
 In short: it represents API response status
+
+## JPA
+### What is JPA
+JPA (Java Persistence API) in Java Persistence API is used to save and fetch data from database using Java objects instead of SQL.
+It maps your classes to database tables automatically.
+In short: it lets you work with Java objects instead of writing SQL queries.
+JPA allows to convert objects to relational tables.
+It like a specification. JPA makes querying easier and allows to save and updates objects without DML.
+In built in Spring Boot and just needed a dependency to integrate.
+
+### Application Layers
+In Spring Boot, apps are divided into layers:
+#### Presentation Layer
+Presentation Layer (Controller) → handles user requests and sends responses (API/UI)
+#### Service Layer
+Service Layer → contains business logic (processing, rules)
+#### Data Access Layer
+Data Access Layer (Repository/DAO) → interacts with database
+
+Controller → Service → Database (Repository/DAO).
+
+### Data Access Layer
+JPA Repository interface provides all common operation like CRUD for a data driven application.
+We can also add special cases according to our needs.
+Interface needs entity name and primary key type. 
+
+### H2 Database
+H2 Database is a lightweight database mostly used for testing and development.
+It runs in memory (no setup needed) and starts quickly.
+A temporary, fast database used for testing apps.
+H2 database is an Java based open-source relational database API. So, works fast for Java based application.
+H2 database runs in same jvm with your app called embedded mode.
+It runs on its own sever and accepts request from client over the network called server mode.
+It has browser based console app, to see tables and data.
+
+### H2 Database Configuration
+Add Spring Data JPA Dependency -> Persist data in database using Spring Data and Hibernate. Also allows you to define entities and repositories.
+
+Add H2 Database Dependency
+
+Add Dependencies in pom.xml if maven selected and reload Maven projects/dependencies. Else for gradle, add in build.gradle file.
+
+Add Database configuration in application.properties file -> Specify Data source url and tell spring boot to enable h2 console.
 
 ## Java Concepts
 ### Iterator
@@ -93,3 +139,6 @@ Create a class variable with value and increment it before adding new object.
 ### Removal in for-each loop
 for-each loop internally uses an iterator, and when you modify (remove/add) the list directly, the iterator detects a mismatch.
 This cause errors.
+
+### Add Dependencies in your app
+If you need any dependency, go to start.spring.io and select dependency with your build tool maven or gradle. Copy the dependency from in explore.

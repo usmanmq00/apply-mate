@@ -51,6 +51,28 @@ In short: it sits between Controller and Repository and contains your core logic
 It matches the value in {} and sends it to your method.
 In short: it gets data from the URL path (like /user/10 → 10).
 
+### @Entity
+@Entity in JPA is used to mark a Java class as a database table.
+It tells JPA to map this class to a table in the database.
+In short: it makes your class store data in DB.
+
+### @Table
+@Table in JPA is used to specify the table name in the database for your entity.
+If you don’t use it, JPA uses the class name as table name by default.
+In short: it lets you customize the DB table name.
+
+### @Id
+@Id in JPA is used to mark a field as the primary key of the table.
+It uniquely identifies each record in the database.
+In short: it represents the unique ID of each row.
+
+### @GeneratedValue
+@GeneratedValue in JPA is used to auto-generate the primary key value (like auto-increment).
+It works with @Id to create IDs automatically.
+n short: it automatically generates ID for each record.
+
+
+
 ## Programming and Spring Concepts
 ### Loose Coupling
 Loose Coupling means different parts of your code depend as little as possible on each other.
@@ -71,6 +93,7 @@ In short: it’s the recommended way of Dependency Injection (more safe and test
 Entity in JPA is a Java class that represents a database table.
 Each object of that class represents a row in the table.
 In short: class = table, object = row.
+It is nothing more than POJO or template for database
 
 ### ResponseEntity class -> For consistent and customizable response across all apis
 ResponseEntity in Spring Framework is used to send a full HTTP response (body + status code + headers).
@@ -81,6 +104,11 @@ In short: it helps you send custom API responses with status.   //
 HttpStatus in Spring Framework is an enum that contains standard HTTP status codes (like 200, 404, 500).
 It is used with ResponseEntity to set the response status.
 In short: it represents API response status
+
+### Why default constructor is need for jpa entity?
+In JPA, a default (no-argument) constructor is required because JPA creates objects using reflection.
+JPA first creates an empty object and then fills values from the database.
+It is needed so JPA can instantly create the entity object without passing values.
 
 ## JPA
 ### What is JPA
@@ -132,9 +160,19 @@ It creates a cursor that moves through each item in the list one by one.
 Because the for-each loop internally uses an iterator, and when you modify (remove/add) the list directly, the iterator detects a mismatch.
 We need a loop with Iterator to traverse all elements safely and perform actions like remove while iterating.
 
+### Reflection
+In Java, reflection means a program can inspect and use classes, methods, and fields at runtime (while the program is running).
+It allows frameworks like JPA to create objects and set values without knowing the class details in advance.
+In short: Reflection is the ability of Java to analyze and manipulate code while the program is running.
+Reflection in Java is not an API by itself, it is a concept (feature of Java).
+But Java provides a Reflection API (like Class, Method, Field classes) to use that concept in code.
+Reflection is a concept, and Java gives an API to use it in practice.
+
 ## Project Learnings
 ### Taking control generating id from end user to yourself
-Create a class variable with value and increment it before adding new object.
+Manual way -> Create a class variable with value and increment it before adding new object.
+
+Using annotation on primary key -> @GeneratedValue(strategy=GenerationType.TYPE_NAME)
 
 ### Removal in for-each loop
 for-each loop internally uses an iterator, and when you modify (remove/add) the list directly, the iterator detects a mismatch.
